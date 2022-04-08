@@ -112,7 +112,7 @@ jobs: # a collection of
       - run:
           name: Run Unit Tests with XSpec
           command: |
-            bash true
+            bash -c "/bin/true"
   job-validate-markdown:
     executor: java-executor
     steps:
