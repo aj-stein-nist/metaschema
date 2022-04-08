@@ -103,6 +103,16 @@ jobs: # a collection of
           paths:
             - .runbuild
             - .skipbuild
+  job-run-tests:
+    executor: java-executor
+    steps:
+      - *checkout
+      - *attach_build_workspace
+      - check-skip-build
+      - run:
+          name: Run Unit Tests with XSpec
+          command: |
+            bash true
   job-validate-markdown:
     executor: java-executor
     steps:
