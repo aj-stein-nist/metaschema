@@ -179,6 +179,13 @@ workflows:
           filters:
             tags:
               ignore: /.*/
+      - job-run-tests:
+          requires:
+            - job-ci-skip-check
+          filters:
+            branches:
+              ignore:
+                - nist-pages
       - job-validate-markdown:
           requires:
             - job-ci-skip-check
