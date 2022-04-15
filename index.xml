@@ -7,4 +7,6 @@ Assembly An assembly is defined as follows:
 The information structure used to represent a managed object within a given metaschema definition. An assembly does not have an associated value.
 An assembly may reference or directly define zero or more flags.
 An Assembly has a model consisting of references to zero or more assemblies or flags.
-Data Model A data model, abbreviated as DM, is defined as follows:</description></item></channel></rss>
+Data Model A data model, abbreviated as DM, is defined as follows:</description></item><item><title>Test Contact Us</title><link>https://pages.nist.gov/metaschema/contribute/test1/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/metaschema/contribute/test1/</guid><description>This project has been split from the Open Security Controls Assessment Language project from which it originated. As a result, we are still using some of the OSCAL contact information.
+Please email the OSCAL team with any questions you have about this project or if you are interested in getting involved.
+Please visit our GitHub repository for more information, schemas, and examples.</description></item></channel></rss>
