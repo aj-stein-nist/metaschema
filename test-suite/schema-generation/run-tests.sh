@@ -211,21 +211,16 @@ metaschema_lib=$(get_abs_path "${METASCHEMA_SCRIPT_DIR}/../toolchains/xslt-M4/va
 schematron="$metaschema_lib/metaschema-composition-check.sch"
 compiled_schematron="${SCRATCH_DIR}/metaschema-schematron-compiled.xsl"
 
-build_schematron "$schematron" "$compiled_schematron"
+build_schematron "$schematron" "$compiled_schematron" import-base=$metaschema_lib
+
 cmd_exitcode=$?
 if [ $cmd_exitcode -ne 0 ]; then
   echo -e "${P_ERROR}Compilation of Schematron '${P_END}${schematron}${P_ERROR}' failed.${P_END}"
   exit 1
 fi
 # the following is needed by the compiled template
-cp "${metaschema_lib}/metaschema-compose.xsl" "${SCRATCH_DIR}"
 cp "${metaschema_lib}/oscal-datatypes-check.xsl" "${SCRATCH_DIR}"
 cp "${metaschema_lib}/metaschema-validation-support.xsl" "${SCRATCH_DIR}"
-cp "${metaschema_lib}/metaschema-metaprocess.xsl" "${SCRATCH_DIR}"
-cp "${metaschema_lib}/metaschema-collect.xsl" "${SCRATCH_DIR}"
-cp "${metaschema_lib}/metaschema-reduce1.xsl" "${SCRATCH_DIR}"
-cp "${metaschema_lib}/metaschema-reduce2.xsl" "${SCRATCH_DIR}"
-cp "${metaschema_lib}/metaschema-digest.xsl" "${SCRATCH_DIR}"
 
 test_dirs=()
 if [ -n "$1" ]; then

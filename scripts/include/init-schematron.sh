@@ -15,15 +15,16 @@ init_schematron() {
 build_schematron() {
   init_schematron
 
-  local schematron="$1"
-  local compiled_schematron="$2"
+  local schematron="$1"; shift
+  local compiled_schematron="$1"; shift
+  local extra_params=($@)
 
   # iso_dsdl_include.xsl
-  xsl_transform "$SCHEMATRON_DIR/iso_dsdl_include.xsl" "$schematron" "" | \
+  xsl_transform "$SCHEMATRON_DIR/iso_dsdl_include.xsl" "$schematron" "" "${extra_params[@]}" | \
   # iso_abstract_expand.xsl
-  xsl_transform "$SCHEMATRON_DIR/iso_abstract_expand.xsl" "-" "" | \
+  xsl_transform "$SCHEMATRON_DIR/iso_abstract_expand.xsl" "-" "" "${extra_params[@]}" | \
   # iso_svrl_for_xslt2.xsl
-  xsl_transform "$SCHEMATRON_DIR/iso_svrl_for_xslt2.xsl" "-" "$compiled_schematron" "generate-paths=true diagnose=true allow-foreign=true"
+  xsl_transform "$SCHEMATRON_DIR/iso_svrl_for_xslt2.xsl" "-" "$compiled_schematron" "generate-paths=true diagnose=true allow-foreign=true ${extra_params[@]}"
   cmd_exitcode=$?
   if [ $cmd_exitcode -ne 0 ]; then
       echo -e "${P_ERROR}Generating compiled Schematron failed for '${P_END}$schematron${P_ERROR}'.${P_END}"

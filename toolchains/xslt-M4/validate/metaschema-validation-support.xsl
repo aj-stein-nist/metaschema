@@ -20,7 +20,8 @@
     <xsl:variable name="home" select="/"/>
     <xsl:variable name="xslt-base" select="document('')/document-uri()"/>
 
-    <xsl:import href="../nist-metaschema-metaprocess.xsl"/>
+    <xsl:param name="import-base" select=".." static="yes"/>
+    <xsl:import _href="$import-base/nist-metaschema-metaprocess.xsl"/>
     
     <!-- The $transformation-sequence declares transformations to be applied in order. -->
     <xsl:variable name="transformation-sequence">
